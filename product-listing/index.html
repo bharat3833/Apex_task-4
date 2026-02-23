@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopHub - Premium Product Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="floating-shapes"></div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-shopping-bag"></i>
+                    <h1>ShopHub</h1>
+                </div>
+                <nav class="nav">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="globalSearch" placeholder="Search products...">
+                    </div>
+                    <div class="nav-actions">
+                        <button class="btn btn-secondary" id="cartBtn">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </button>
+                        <button class="btn btn-secondary" id="wishlistBtn">
+                            <i class="fas fa-heart"></i>
+                            <span class="wishlist-count">0</span>
+                        </button>
+                        <button class="btn btn-primary" id="filterToggle">
+                            <i class="fas fa-filter"></i>
+                            Filters
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="app-layout">
+                <!-- Sidebar Filters -->
+                <aside class="sidebar" id="sidebar">
+                    <div class="sidebar-content">
+                        <div class="filter-section">
+                            <h3>Categories</h3>
+                            <div class="category-filters">
+                                <label class="filter-label">
+                                    <input type="checkbox" value="electronics" checked>
+                                    <span>Electronics</span>
+                                </label>
+                                <label class="filter-label">
+                                    <input type="checkbox" value="clothing" checked>
+                                    <span>Clothing</span>
+                                </label>
+                                <label class="filter-label">
+                                    <input type="checkbox" value="accessories" checked>
+                                    <span>Accessories</span>
+                                </label>
+                                <label class="filter-label">
+                                    <input type="checkbox" value="home" checked>
+                                    <span>Home & Garden</span>
+                                </label>
+                                <label class="filter-label">
+                                    <input type="checkbox" value="sports" checked>
+                                    <span>Sports & Outdoors</span>
+                                </label>
+                                <label class="filter-label">
+                                    <input type="checkbox" value="books" checked>
+                                    <span>Books & Media</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="filter-section">
+                            <h3>Price Range</h3>
+                            <div class="price-range">
+                                <div class="range-slider">
+                                    <input type="range" id="minPrice" min="0" max="1000" value="0">
+                                    <input type="range" id="maxPrice" min="0" max="1000" value="1000">
+                                </div>
+                                <div class="range-values">
+                                    <span>$<span id="minPriceValue">0</span></span>
+                                    <span>$<span id="maxPriceValue">1000</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="filter-section">
+                            <h3>Brands</h3>
+                            <div class="brand-filters">
+                                <label class="filter-label">
+                                    <input type="checkbox" value="apple" checked>
+                                    <span>Apple</span>
+                                </label>
+                                <label class="filter-label">
+                                    <input type="checkbox" value="samsung" checked>
+                                    <span>Samsung</span>
+                                </label>
+                                <label class="filter-label">
+                                    <input type="checkbox" value="nike" checked>
+                                    <span>Nike</span>
+                                </label>
+                                <label class="filter-label">
+                                    <input type="checkbox" value="adidas" checked>
+                                    <span>Adidas</span>
+                                </label>
+                                <label class="filter-label">
+                                    <input type="checkbox" value="sony" checked>
+                                    <span>Sony</span>
+                                </label>
+                                <label class="filter-label">
+                                    <input type="checkbox" value="lg" checked>
+                                    <span>LG</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="filter-section">
+                            <h3>Rating</h3>
+                            <div class="rating-filters">
+                                <label class="filter-label">
+                                    <input type="checkbox" value="4" checked>
+                                    <span>4★ & Up</span>
+                                </label>
+                                <label class="filter-label">
+                                    <input type="checkbox" value="3" checked>
+                                    <span>3★ & Up</span>
+                                </label>
+                                <label class="filter-label">
+                                    <input type="checkbox" value="2" checked>
+                                    <span>2★ & Up</span>
+                                </label>
+                                <label class="filter-label">
+                                    <input type="checkbox" value="1" checked>
+                                    <span>1★ & Up</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="filter-section">
+                            <h3>Availability</h3>
+                            <div class="availability-filters">
+                                <label class="filter-label">
+                                    <input type="checkbox" value="instock" checked>
+                                    <span>In Stock</span>
+                                </label>
+                                <label class="filter-label">
+                                    <input type="checkbox" value="sale" checked>
+                                    <span>On Sale</span>
+                                </label>
+                                <label class="filter-label">
+                                    <input type="checkbox" value="freeshipping" checked>
+                                    <span>Free Shipping</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-secondary" id="clearFilters">Clear All Filters</button>
+                    </div>
+                </aside>
+
+                <!-- Main Content -->
+                <section class="content">
+                    <div class="content-header">
+                        <div class="results-info">
+                            <h2>Products</h2>
+                            <span class="results-count">Showing <span id="productCount">0</span> products</span>
+                        </div>
+                        <div class="view-controls">
+                            <div class="sort-dropdown">
+                                <select id="sortProducts">
+                                    <option value="featured">Featured</option>
+                                    <option value="price-low">Price: Low to High</option>
+                                    <option value="price-high">Price: High to Low</option>
+                                    <option value="rating">Highest Rated</option>
+                                    <option value="newest">Newest First</option>
+                                    <option value="name">Name: A to Z</option>
+                                </select>
+                            </div>
+                            <div class="view-options">
+                                <button class="view-btn active" data-view="grid">
+                                    <i class="fas fa-th"></i>
+                                </button>
+                                <button class="view-btn" data-view="list">
+                                    <i class="fas fa-list"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="active-filters" id="activeFilters">
+                        <!-- Active filter tags will be added here -->
+                    </div>
+
+                    <div class="products-container">
+                        <div id="productsList" class="products-grid">
+                            <!-- Products will be dynamically added here -->
+                        </div>
+                        <div id="emptyState" class="empty-state">
+                            <i class="fas fa-search"></i>
+                            <h3>No products found</h3>
+                            <p>Try adjusting your filters or search terms</p>
+                        </div>
+                    </div>
+
+                    <div class="pagination" id="pagination">
+                        <!-- Pagination buttons will be added here -->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalProductName">Product Details</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-details">
+                    <div class="product-image-gallery">
+                        <img id="modalProductImage" src="" alt="Product">
+                        <div class="image-thumbnails">
+                            <!-- Thumbnails will be added here -->
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 id="modalProductTitle"></h3>
+                        <div class="product-rating" id="modalProductRating"></div>
+                        <div class="product-price" id="modalProductPrice"></div>
+                        <p id="modalProductDescription"></p>
+                        <div class="product-meta" id="modalProductMeta"></div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary" id="addToCartBtn">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                            <button class="btn btn-secondary" id="addToWishlistBtn">
+                                <i class="fas fa-heart"></i> Add to Wishlist
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="sidebar-drawer">
+        <div class="sidebar-drawer-content">
+            <div class="sidebar-drawer-header">
+                <h3>Shopping Cart</h3>
+                <button class="sidebar-drawer-close">&times;</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be added here -->
+            </div>
+            <div class="cart-summary">
+                <div class="cart-total">
+                    <span>Total: $<span id="cartTotal">0.00</span></span>
+                </div>
+                <button class="btn btn-primary">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <span id="toastMessage">Product added to cart!</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
